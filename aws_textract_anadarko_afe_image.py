@@ -48,29 +48,38 @@ def well_data(start: str, end: str, lines: list[str]) -> dict:
         if end in line:
             end_index = i
 
-    print(start)
+    start_dict = {}
+    start_dict[start] = {}
     for i, line in enumerate(lines[start_index:end_index]):
         for attribute, regex in attribute_regex_patterns.items():
             match = re.search(regex, line)
             if match:
                 if "Well Name" in attribute:
-                    print(f"{attribute} - {match.group(1)}")
+                    # print(f"{attribute} - {match.group(1)}")
+                    start_dict[start][attribute] = match.group(1)
                 if "Abstract" in attribute:
-                    print(f"{attribute} - {match.group()}")
+                    # print(f"{attribute} - {match.group()}")
+                    start_dict[start][attribute] = match.group()
                 if "Block" in attribute:
-                    print(f"{attribute} - {match.group(1)}")
+                    # print(f"{attribute} - {match.group(1)}")
+                    start_dict[start][attribute] = match.group(1)
                 if "Section" in attribute:
-                    print(f"{attribute} - {match.group(1)}")
+                    # print(f"{attribute} - {match.group(1)}")
+                    start_dict[start][attribute] = match.group(1)
                 if "County" in attribute:
-                    print(f"{attribute} - {match.group(1)}")
+                    # print(f"{attribute} - {match.group(1)}")
+                    start_dict[start][attribute] = match.group(1)
                 if "Ground Elevation" in attribute:
-                    print(f"{attribute} - {match.group(1)}")    
+                    # print(f"{attribute} - {match.group(1)}")  
+                    start_dict[start][attribute] = match.group(1)  
                 if "X" in attribute:
-                    print(f"{attribute} - {match.group(1)}")
+                    # print(f"{attribute} - {match.group(1)}")
+                    start_dict[start][attribute] = match.group(1)
                 if "Y" in attribute:
-                    print(f"{attribute} - {match.group(1)}")
+                    # print(f"{attribute} - {match.group(1)}")
+                    start_dict[start][attribute] = match.group(1)
 
-    print()
+    return start_dict
 
 def main():
     pdf_path = "MOOSEHORN_54_1_41_44-pages.pdf"
@@ -79,10 +88,11 @@ def main():
         section_data = {}
         lines=process_text_detection(image=image)
         if "NEW DRILL" in lines:
-            well_data("SURFACE LOCATION", "PENETRATION POINT", lines)
-            well_data("LAST TAKE POINT", "END OF TERMINUS", lines)
+            surface_location = well_data("SURFACE LOCATION", "PENETRATION POINT", lines)
+            bottom_hole = well_data("LAST TAKE POINT", "END OF TERMINUS", lines)
 
-
+            print(surface_location)
+            print(bottom_hole)
 if __name__ == "__main__":
     main()
 
