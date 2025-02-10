@@ -19,7 +19,6 @@ gunicorn = "*"
 pypdf2 = "*"
 jsonify = "*"
 pdfquery = "*"
-pytesseract = "*"
 flask-autoindex = "*"
 pylint = "*"
 langchain = "*"
@@ -44,6 +43,9 @@ langchain-openai = "*"
 pypdf = "*"
 langchain-community = "*"
 openai = "*"
+pdf2image = "*"
+pytesseract = "*"
+pillow = "*"
 
 [dev-packages]
 
