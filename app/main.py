@@ -561,6 +561,7 @@ def time(project: str):
         directory = os.path.join(os.environ['PROJECTS_PATH'], project)
         app.add_static_files(f'/{project}', directory)
         files = os.listdir(directory)
+        files.sort()
         for file in files:
             if os.path.isfile(os.path.join(directory, file)):
                 ui.link(text=file, target=f'/{project}/{file}', new_tab=True).style('font-size: 1.2rem').classes('w-100')
