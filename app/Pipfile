@@ -46,6 +46,7 @@ openai = "*"
 pdf2image = "*"
 pytesseract = "*"
 pillow = "*"
+fastapi = "*"
 
 [dev-packages]
 
