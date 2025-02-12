@@ -305,7 +305,7 @@ class Context():
     @staticmethod
     def moosehorn_3_mile():
         context = Context()
-        context.project = "Test"
+        context.project = "moosehorn-3-mile"
         context.project_path = os.path.join(context.projects_path, context.project)
         
         context.target_well_information_path = os.path.join(context.project_path, 'target_well_information')

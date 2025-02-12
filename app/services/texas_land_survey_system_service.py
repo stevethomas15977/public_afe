@@ -11,7 +11,7 @@ class TexasLandSurveySystemService:
     def get_by_county_abstract(self, county: str, abstract: str) -> TexasLandSurveySystem:
         return self.repository.get_by_county_abstract(county=county, abstract=abstract)
 
-    def get_by_county_abstract_block_section(self, county: str, abstract: str, block: str, section: str) -> TexasLandSurveySystem:
+    def get_by_county_abstract_block_section(self, county: str, abstract: str, block: str, section: int) -> TexasLandSurveySystem:
         return self.repository.get_by_county_abstract_block_section(county=county, abstract=abstract, block=block, section=section)
 
     def get_distinct_counties(self) -> list[str]:

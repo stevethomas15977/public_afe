@@ -8,7 +8,7 @@
             "name": "Debug Workflow Manager",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
+            "program": "${workspaceFolder}/app/workflow_manager.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}/app",
             "envFile": "${workspaceFolder}/app/.env"

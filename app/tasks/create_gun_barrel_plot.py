@@ -122,7 +122,7 @@ class CreateGunBarrelPlot(Task):
             # Set axis labels
             if target_well.state == "TX":
                 x_axis_label = f"Bottom hole spacing from west line {target_well.state}/{target_well.county}/{target_well.tx_abstract_southwest_corner}/{target_well.tx_block_southwest_corner}/{int(float(target_well.nm_tx_section_southwest_corner))}) (100 ft intervals)"
-                plss = texas_land_survey_system_service.get_by_county_abstract_block_section(target_well.county, target_well.tx_abstract_southwest_corner, target_well.tx_block_southwest_corner, str(int(float(target_well.nm_tx_section_southwest_corner))))            
+                plss = texas_land_survey_system_service.get_by_county_abstract_block_section(target_well.county, target_well.tx_abstract_southwest_corner, target_well.tx_block_southwest_corner, target_well.nm_tx_section_southwest_corner)           
                 if plss:
                     fnl_grid_x, fnl_grid_y = latlon_to_utm_feet(plss.northeast_latitude, plss.northeast_longitude)
         
@@ -307,7 +307,7 @@ class CreateGunBarrelPlot(Task):
                 bbox_to_anchor=(0.5, -0.14),
                 handler_map=handlers,
                 borderaxespad=0.1,
-                ncol=(len(wells)%6-1))
+                ncol=(len(wells)%5-1))
 
             custom_legend.get_frame().set_facecolor(BACKGROUND_COLOR)
             ax.add_artist(custom_legend)

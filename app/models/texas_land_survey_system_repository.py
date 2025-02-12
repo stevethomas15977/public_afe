@@ -59,7 +59,7 @@ class TexasLandSurveySystemRepository:
         finally:
             cursor.close()
 
-    def get_by_county_abstract_block_section(self, county: str, abstract:str, block: str, section: str) -> TexasLandSurveySystem:
+    def get_by_county_abstract_block_section(self, county: str, abstract:str, block: str, section: int) -> TexasLandSurveySystem:
         try:
             cursor = Cursor(self.connection)
             cursor.execute(AFEDB.SQL.SELECT_TEXAS_LAND_SURVEY_SYSTEM_BY_COUNTY_ABSTRACT_BLOCK_SECTION.value, (county, abstract, block, section))

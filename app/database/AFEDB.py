@@ -933,9 +933,7 @@ class AFEDB:
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """
         
-        SELECT_TEXAS_LAND_SURVEY_SYSTEM_BY_COUNTY_ABSTRACT_BLOCK_SECTION = """
-            SELECT * FROM texas_land_survey_system WHERE county = ? AND abstract = ? AND block = ? AND section = ?
-        """
+        SELECT_TEXAS_LAND_SURVEY_SYSTEM_BY_COUNTY_ABSTRACT_BLOCK_SECTION = """SELECT * FROM texas_land_survey_system WHERE county = ? AND abstract = ? AND block = ? AND section = ?"""
 
         SELECT_TEXAS_LAND_SURVEY_SYSTEM_BY_COUNTY_ABSTRACT = """
             SELECT * FROM texas_land_survey_system WHERE county = ? AND abstract = ?

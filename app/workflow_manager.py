@@ -62,9 +62,9 @@ class WorkflowManager:
         workgroup.add_task(TASKS.DETERMINE_WELL_SPACING_GUN_BARREL_PLOT_WELLS.value)
         workgroup.add_task(TASKS.CALCULATE_WELL_OVERLAP_PERCENTAGE.value)
         workgroup.add_task(TASKS.ENRICH_GUN_BARREL.value)
-        # workgroup.add_task(TASKS.CREATE_GUN_BARREL_PLOT.value)
+        workgroup.add_task(TASKS.CREATE_GUN_BARREL_PLOT.value)
         workgroup.add_task(TASKS.CREATE_CROSS_PLOT.value)
-        # workgroup.add_task(TASKS.CREATE_EXCEL_NATIVE_GUN_BARREL_PLOT.value)
+        workgroup.add_task(TASKS.CREATE_EXCEL_NATIVE_GUN_BARREL_PLOT.value)
         if self._context.target_well_information_file:                        
             workgroup.run()
 
@@ -78,7 +78,7 @@ class WorkflowManager:
         self._factory = TaskFactory(self._context)
 
 if __name__ == "__main__":
-    context = Context().olive_won_mwp()
+    context = Context().moosehorn_3_mile()
     workflow_manager = WorkflowManager(context)
     workflow_manager.project_initiation_workflow()
     workflow_manager.base_workflow()
