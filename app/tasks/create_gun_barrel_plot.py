@@ -307,7 +307,7 @@ class CreateGunBarrelPlot(Task):
                 bbox_to_anchor=(0.5, -0.14),
                 handler_map=handlers,
                 borderaxespad=0.1,
-                ncol=(len(wells)%5-1))
+                ncol=(len(wells)))
 
             custom_legend.get_frame().set_facecolor(BACKGROUND_COLOR)
             ax.add_artist(custom_legend)

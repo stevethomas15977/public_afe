@@ -305,7 +305,7 @@ class Context():
     @staticmethod
     def moosehorn_3_mile():
         context = Context()
-        context.project = "moosehorn-3-mile"
+        context.project = "test"
         context.project_path = os.path.join(context.projects_path, context.project)
         
         context.target_well_information_path = os.path.join(context.project_path, 'target_well_information')
@@ -315,9 +315,9 @@ class Context():
 
         context.db_path = os.path.join(context.logs_path, f"{context.project}-{context.version}.db")
 
-        context.target_well_information_file = os.path.join(context.target_well_information_path, "moosehorn-3-mile-target-well-information.xlsx")
-        context.well_file = os.path.join(context.well_data_path, "moosehorn-3-mile-well-data.xlsx")
-        context.survey_file = os.path.join(context.survey_data_path, "moosehorn-3-mile-survey-data.xlsx")
+        context.target_well_information_file = os.path.join(context.target_well_information_path, f"{context.project}-target-well-information.json")
+        context.well_file = os.path.join(context.well_data_path, f"{context.project}-well-data.xlsx")
+        context.survey_file = os.path.join(context.survey_data_path, f"{context.project}-survey-data.xlsx")
         return context
     
     @staticmethod

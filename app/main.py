@@ -210,11 +210,11 @@ async def index():
                 target_well_information_union_container.visible = True
                 
         async def handle_state_change():
-            if project.state == 'New Mexico':
+            if project.state == 'NM':
                 new_mexico_container.visible = True
                 texas_container.visible = False
                 counties = new_mexico_land_survey_service.get_distinct_counties()
-            elif project.state == 'Texas':
+            elif project.state == 'TX':
                 texas_container.visible = True
                 new_mexico_container.visible = False
                 counties = texas_land_survey_service.get_distinct_counties()
@@ -223,12 +223,12 @@ async def index():
             county_select.update()
 
         def handle_county_change():
-            if project.state == 'Texas':
+            if project.state == 'TX':
                 abstracts = texas_land_survey_service.get_distinct_abstract_by_county(county_select.value)
                 abstract_select.clear()
                 abstract_select.options = abstracts
                 abstract_select.update()
-            elif project.state == 'New Mexico':
+            elif project.state == 'NM':
                 townships = new_mexico_land_survey_service.get_distinct_townships_by_county(county_select.value)
                 township_select.clear()
                 township_select.options = townships
@@ -318,7 +318,8 @@ async def index():
                         for row in project.rows:
                             if not isna(row['surface_x']) and not isna(row['surface_y']) and not isna(row['bottom_hole_x']) and not isna(row['bottom_hole_y']):
                                 context.target_well_information_file = os.path.join(context.target_well_information_path, f'{project.name}-target-well-information.json')
-                    
+                                project.target_well_information_file = context.target_well_information_file
+                                
                                 with open(os.path.join(context.target_well_information_path, f'{project.name}-target-well-information.json'), "w") as f:
                                     json.dump(project.to_dict(), f, indent=4)
                             else:
@@ -367,7 +368,7 @@ async def index():
                 ui.label('Project Name').style('font-size: 1.8rem').classes('w-100').style('font-weight: bold;')
                 project_name_container = ui.row().style('width: 100%;').classes('justify-left')
                 with project_name_container:
-                    ui.input(label='name', on_change=lambda: handle_project_name_change()).bind_value(project, 'name').classes('w-60')
+                    ui.input(label='Enter project name', on_change=lambda: handle_project_name_change()).bind_value(project, 'name').classes('w-80')
 
                 ui.separator()
 
@@ -424,7 +425,7 @@ async def index():
                         
                         state_county_container = ui.row().style('width: 100%;').classes('justify-left')
                         with state_county_container:
-                            ui.select(options=['Texas', 'New Mexico'], 
+                            ui.select(options=['TX', 'NM'], 
                                 with_input=True,
                                 label='State',
                                 on_change=lambda: handle_state_change()).bind_value(project, 'state').style('font-size: 1.2rem').classes('w-40')

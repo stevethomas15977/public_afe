@@ -5,6 +5,7 @@ from .task import Task
 from .task_enum import TASKS
 from .create_database import CreateDatabase
 from .load_target_well_information import LoadTargetWellInformation
+from .load_target_well_information_json import LoadTargetWellInformationJSON
 from .load_well_data import LoadWellData
 from .load_survey_data import LoadSurveyData
 from .etl_well import ETLWell

@@ -6,6 +6,7 @@ class TASKS(Enum):
     CREATE_DATABASE = 'create_database'
     LOAD_LOOKUP_TABLES = 'load_lookup_tables'
     LOAD_TARGET_WELL_INFORMATION = 'load_target_well_information'
+    LOAD_TARGET_WELL_INFORMATION_JSON = 'load_target_well_information_json'
     LOAD_WELL_DATA = 'load_well_data'
     LOAD_SURVEY_DATA = 'load_survey_data'
     VALIDATE_TARGET_WELL_INFORMATION = 'validate_target_well_information'

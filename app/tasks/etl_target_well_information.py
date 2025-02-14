@@ -48,7 +48,7 @@ class ETLTargetWellInformation(Task):
                     else:
                         raise ValueError(f"NAD System {target_well.nad_system} is not supported")
                      
-                    if "TX(C)" == target_well.nad_zone or "C" == target_well.nad_zone:
+                    if "C" == target_well.nad_zone or "Central" == target_well.nad_zone:
                         spcZone = 4203
                     else:
                         raise ValueError(f"NAD Zone {target_well.nad_zone} is not supported")

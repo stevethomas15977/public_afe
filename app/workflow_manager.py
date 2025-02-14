@@ -24,7 +24,8 @@ class WorkflowManager:
         workgroup.add_task(TASKS.CREATE_DATABASE.value)
         workgroup.add_task(TASKS.LOAD_LOOKUP_TABLES.value)
         if self._context.target_well_information_file:
-            workgroup.add_task(TASKS.VALIDATE_TARGET_WELL_INFORMATION.value)
+            if self._context.target_well_information_file.endswith(".xlsx"):
+                workgroup.add_task(TASKS.VALIDATE_TARGET_WELL_INFORMATION.value)
             
         workgroup.run()
 
@@ -34,7 +35,10 @@ class WorkflowManager:
         workgroup.add_task(TASKS.LOAD_SURVEY_DATA.value)
         workgroup.add_task(TASKS.ETL_WELL.value)
         if self._context.target_well_information_file:
-            workgroup.add_task(TASKS.LOAD_TARGET_WELL_INFORMATION.value)
+            if self._context.target_well_information_file.endswith(".json"):
+                workgroup.add_task(TASKS.LOAD_TARGET_WELL_INFORMATION_JSON.value)
+            else:
+                workgroup.add_task(TASKS.LOAD_TARGET_WELL_INFORMATION.value)
             workgroup.add_task(TASKS.ETL_TARGET_WELL_INFORMATION.value)
             workgroup.add_task(TASKS.CREATE_TARGET_WELL_ANALYSIS.value)
             workgroup.add_task(TASKS.CREATE_SIMULATED_WELL.value)
