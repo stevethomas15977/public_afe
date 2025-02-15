@@ -599,4 +599,4 @@ ui.run(reload=False,
        host=os.environ['PRIVATE_IPV4'], 
        port=int(os.environ['HTTP_PORT']), 
        storage_secret=os.environ['APP_SECRET'],
-       title='AFE Analysis')
+       title='AFE Analysis v1.8')
