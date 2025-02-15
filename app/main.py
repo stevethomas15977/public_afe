@@ -138,9 +138,10 @@ async def index():
     footer = ui.footer().classes('items-center justify-between')
 
     context = Context()
-    project = Project()
-    
+    project = None
+
     def create():
+        project = Project()
         texas_land_survey_service = TexasLandSurveySystemService(context._texas_land_survey_system_database_path)
         new_mexico_land_survey_service = NewMexicoLandSurveySystemService(context._new_mexico_land_survey_system_database_path)
 
@@ -376,8 +377,9 @@ async def index():
                 offset_well_data_files_container = ui.row().style('width: 100%;').classes('justify-left')
                 with offset_well_data_files_container:
                     ui.select(options=['Enverus'], label='Provider').style('font-size: 1.2rem').bind_value(project, 'provider').classes('w-40')            
-                    well_data_upload = ui.upload(label='Well Data', on_upload=lambda event: handle_well_data_file_upload(event=event, file_type='WELL_DATA')).style('font-size: 1.2rem').classes('w-60')
-                    survey_data_ulpload = ui.upload(label='Survey Data', on_upload=lambda event: handle_well_data_file_upload(event=event, file_type='SURVEY_DATA')).style('font-size: 1.2rem').classes('w-60')      
+                    with ui.row().style('width: 100%;').classes('justify-left'):
+                        well_data_upload = ui.upload(label='Well Data', on_upload=lambda event: handle_well_data_file_upload(event=event, file_type='WELL_DATA')).style('font-size: 1.2rem').classes('w-60')
+                        survey_data_ulpload = ui.upload(label='Survey Data', on_upload=lambda event: handle_well_data_file_upload(event=event, file_type='SURVEY_DATA')).style('font-size: 1.2rem').classes('w-60')      
 
                 ui.separator()
 
@@ -387,14 +389,14 @@ async def index():
                     target_well_information_source_select = ui.select(options=['Union', 'Manual'], with_input=True,
                         label='Source',
                         on_change=lambda: handle_target_well_information_source_change()).bind_value(project, 'target_well_information_source').style('font-size: 1.2rem').classes('w-40')
-                    ui.separator()
+                    ui.space()
                     
                     target_well_information_union_container = ui.row().style('width: 100%;').classes('justify-left')
                     target_well_information_union_container.visible = True
                     with target_well_information_union_container:
                         target_well_information_upload = ui.upload(label='Target Well Information', 
                                                                    on_upload=lambda event: handle_target_well_information_file_upload(event=event, file_type='TARGET_WELL_INFORMATION')).style('font-size: 1.2rem').classes('w-60')
-
+                        ui.link('Download Template', target='https://stevethomascpapublic.s3.amazonaws.com/target_well_information-TEMPLATE.xlsx', new_tab=True).style('font-size: 1.2rem').classes('w-80')
                     target_well_information_manual_container = ui.row().style('width: 100%;').classes('justify-left')
                     target_well_information_manual_container.visible = False
                     with target_well_information_manual_container:
