@@ -5,7 +5,9 @@ from services import (AnalysisService,
                       TargetWellInformationService, 
                       WellService,
                       XYZDistanceService,
-                      StratigraphicService)
+                      StratigraphicService,
+                      TexasLandSurveySystemService,
+                      NewMexicoLandSurveySystemService)
 
 from traceback import format_exc
 import matplotlib.pyplot as plt
@@ -58,6 +60,8 @@ class CreateCrossPlot(Task):
             well_service = WellService(self.context.db_path)
             xyz_distance_service = XYZDistanceService(self.context.db_path)
             stratigraphic_service = StratigraphicService(self.context.db_path)
+            texas_land_survey_service = TexasLandSurveySystemService(self.context._texas_land_survey_system_database_path)
+            new_mexico_land_survey_service = NewMexicoLandSurveySystemService(self.context._new_mexico_land_survey_system_database_path)
 
             target_well = target_well_information_service.get_first_row()
             
@@ -98,7 +102,8 @@ class CreateCrossPlot(Task):
 
             # Set axis labels
             if target_well.state == "TX":
-                x_axis_label = f"Bottom hole spacing from west line {target_well.state}/{target_well.county}/{target_well.tx_abstract_southwest_corner}/{target_well.tx_block_southwest_corner}/{int(float(target_well.nm_tx_section_southwest_corner))}) (500 ft/int.)"
+                plss = texas_land_survey_service.get_by_county_abstract(target_well.county, target_well.tx_abstract_southwest_corner)           
+                x_axis_label = f"Bottom hole spacing from west line {target_well.state}/{target_well.county}/{target_well.tx_abstract_southwest_corner}/{plss.block}/{int(float(plss.section))}) (500 ft/int.)"
             elif target_well.state == "NM":
                 x_axis_label = f"Bottom hole spacing from west line {target_well.state}/{target_well.county}/{target_well.nw_township_southwest_corner}/{target_well.nm_range_southwest_corner}/{int(float(target_well.nm_tx_section_southwest_corner))}) (500 ft/int.)"
             ax.set_xlabel(x_axis_label)
@@ -109,9 +114,9 @@ class CreateCrossPlot(Task):
             ax.axvline(specific_x, color='blue', linewidth=0.5, linestyle='--', alpha=0.75)
             label_y_position = y_min
             if target_well.state == "TX":
-                ax.text(specific_x, label_y_position, f"{target_well.tx_abstract_southwest_corner}/{target_well.tx_block_southwest_corner}/{int(float(target_well.nm_tx_section_southwest_corner))}", color='black', fontsize=fontsize, ha='center', va='bottom')
+                ax.text(specific_x, label_y_position, x_axis_label, color='black', fontsize=fontsize, ha='center', va='bottom')
             elif target_well.state == "NM":
-                ax.text(specific_x, label_y_position, f"{target_well.nw_township_southwest_corner}/{target_well.nm_range_southwest_corner}/{int(float(target_well.nm_tx_section_southwest_corner))}", color='black', fontsize=fontsize, ha='center', va='bottom')
+                ax.text(specific_x, label_y_position, x_axis_label, color='black', fontsize=fontsize, ha='center', va='bottom')
             
             xyz_distances = xyz_distance_service.get_by_simulated_well()
             

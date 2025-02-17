@@ -53,10 +53,14 @@ class ETLTargetWellInformation(Task):
                     else:
                         raise ValueError(f"NAD Zone {target_well.nad_zone} is not supported")
                     
-                    if (target_well.tx_abstract_southwest_corner is None or 
-                        target_well.tx_block_southwest_corner is None or 
-                        target_well.nm_tx_section_southwest_corner is None):
-                        message = f"TX Abstract, Block, and Section must be provided"
+                    # if (target_well.tx_abstract_southwest_corner is None or 
+                    #     target_well.tx_block_southwest_corner is None or 
+                    #     target_well.nm_tx_section_southwest_corner is None):
+                    #     message = f"TX Abstract, Block, and Section must be provided"
+                    #     raise ValueError(message)
+                    
+                    if (target_well.tx_abstract_southwest_corner is None):
+                        message = f"TX Abstract must be provided"
                         raise ValueError(message)
                     else:
                         tlss = tlss_service.get_by_county_abstract(county=target_well.county, abstract=target_well.tx_abstract_southwest_corner)

@@ -22,7 +22,8 @@ from helpers import (task_logger,
 from services import (AnalysisService, 
                       TargetWellInformationService, 
                       WellService,
-                      XYZDistanceService)
+                      XYZDistanceService,
+                      TexasLandSurveySystemService)
 
 from models import (Analysis,
                     XYZDistance,
@@ -48,7 +49,17 @@ class CreateExcelNativeGunBarrelPlot(Task):
             target_wells, other_wells = wells_to_plot(analysis_service, xyz_distance_service, shallowest, deepest)
 
             plot_title = f"{self.context.project.capitalize()} Barrel Plot ({self.context.version})"
-            section_line_label = create_section_line_label(target_well_information_service.get_first_row())
+
+            target_well = target_well_information_service.get_first_row()
+            if "TX" == target_well.state:
+                texas_land_survey_service = TexasLandSurveySystemService(self.context._texas_land_survey_system_database_path)
+                texas_land_survey_system = texas_land_survey_service.get_by_county_abstract(target_well.county, target_well.tx_abstract_southwest_corner)
+                if texas_land_survey_system:
+                    target_well.tx_block_southwest_corner = texas_land_survey_system.block
+                    target_well.nm_tx_section_southwest_corner = texas_land_survey_system.section
+                    section_line_label = create_section_line_label(target_well)
+            else:
+                section_line_label = create_section_line_label(target_well)
             
             output_file = os.path.join(self.context.project_path, f"{self.context.project}-excel-native-gun-barrel-plot-{self.context.version}.xlsx")
 
@@ -93,7 +104,7 @@ class CreateExcelNativeGunBarrelPlot(Task):
             # Create surface map
             create_surface_map(self.context, 
                                surface_map_worksheet, 
-                               target_well_information_service.get_first_row(),
+                               target_well,
                                ref_index,
                                target_wells,
                                other_wells)
@@ -101,7 +112,7 @@ class CreateExcelNativeGunBarrelPlot(Task):
             # Create 3D plot
             create_3d_plot(self.context, 
                            three_d_plot_worksheet,
-                           target_well_information_service.get_first_row(),
+                           target_well,
                            ref_index,
                            target_wells,
                            other_wells)

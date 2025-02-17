@@ -121,9 +121,10 @@ class CreateGunBarrelPlot(Task):
 
             # Set axis labels
             if target_well.state == "TX":
-                x_axis_label = f"Bottom hole spacing from west line {target_well.state}/{target_well.county}/{target_well.tx_abstract_southwest_corner}/{target_well.tx_block_southwest_corner}/{int(float(target_well.nm_tx_section_southwest_corner))}) (100 ft intervals)"
-                plss = texas_land_survey_system_service.get_by_county_abstract_block_section(target_well.county, target_well.tx_abstract_southwest_corner, target_well.tx_block_southwest_corner, target_well.nm_tx_section_southwest_corner)           
+                x_axis_label = f"Bottom hole spacing from west line {target_well.state}/{target_well.county}/{target_well.tx_abstract_southwest_corner}) (100 ft intervals)"
+                plss = texas_land_survey_system_service.get_by_county_abstract(target_well.county, target_well.tx_abstract_southwest_corner)           
                 if plss:
+                    x_axis_label = f"Bottom hole spacing from west line {target_well.state}/{target_well.county}/{target_well.tx_abstract_southwest_corner}/{plss.block}/{int(float(plss.section))}) (100 ft intervals)"
                     fnl_grid_x, fnl_grid_y = latlon_to_utm_feet(plss.northeast_latitude, plss.northeast_longitude)
         
             elif target_well.state == "NM":
@@ -144,11 +145,8 @@ class CreateGunBarrelPlot(Task):
             specific_x = 0
             ax.axvline(specific_x, color='blue', linewidth=0.5, linestyle='--', alpha=0.75)
             label_y_position = y_min
-            if target_well.state == "TX":
-                ax.text(specific_x, label_y_position, f"{target_well.tx_abstract_southwest_corner}/{target_well.tx_block_southwest_corner}/{int(float(target_well.nm_tx_section_southwest_corner))}", color='black', fontsize=fontsize, ha='center', va='bottom')
-            elif target_well.state == "NM":
-                ax.text(specific_x, label_y_position, f"{target_well.nw_township_southwest_corner}/{target_well.nm_range_southwest_corner}/{int(float(target_well.nm_tx_section_southwest_corner))}", color='black', fontsize=fontsize, ha='center', va='bottom')
-            
+            ax.text(specific_x, label_y_position, x_axis_label, color='black', fontsize=fontsize, ha='center', va='bottom')
+
             legend_elements = []  
             saved_i = 1
             wells = []

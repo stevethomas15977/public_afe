@@ -82,7 +82,7 @@ class WorkflowManager:
         self._factory = TaskFactory(self._context)
 
 if __name__ == "__main__":
-    context = Context().moosehorn_3_mile()
+    context = Context().moosehorn_3mile_nicegui()
     workflow_manager = WorkflowManager(context)
     workflow_manager.project_initiation_workflow()
     workflow_manager.base_workflow()

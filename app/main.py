@@ -235,18 +235,6 @@ async def index():
                 township_select.options = townships
                 township_select.update()
 
-        def handle_abstract_change():
-            blocks = texas_land_survey_service.get_distinct_block_by_county_abstract(project.county, project.abstract)
-            block_select.clear()
-            block_select.options = blocks
-            block_select.update()
-
-        def handle_block_change():
-            sections = texas_land_survey_service.get_distinct_section_by_county_abstract_block(project.county, project.abstract, project.block)
-            tx_section_select.clear()
-            tx_section_select.options = sections
-            tx_section_select.update()
-
         def handle_township_change():
             township_directions = new_mexico_land_survey_service.get_distinct_township_directions_by_county_township(project.county, project.township)
             township_direction_select.clear()
@@ -442,18 +430,8 @@ async def index():
                         with texas_container:
                             abstract_select = ui.select(options=[], 
                                 with_input=True,
-                                label='Abstract',
-                                on_change=lambda: handle_abstract_change()).bind_value(project, 'abstract').style('font-size: 1.2rem').classes('w-40')
+                                label='Abstract').bind_value(project, 'abstract').style('font-size: 1.2rem').classes('w-40')
                         
-                            block_select = ui.select(options=[], 
-                                with_input=True,
-                                label='Block', 
-                                on_change=lambda: handle_block_change()).style('font-size: 1.2rem').bind_value(project, 'block').classes('w-40')
-
-                            tx_section_select = ui.select(options=[],
-                                with_input=True,
-                                label='Section').style('font-size: 1.2rem').bind_value(project, 'tx_section').classes('w-40')
-
                         new_mexico_container = ui.row().style('width: 100%;').classes('justify-left')
                         new_mexico_container.visible = False
                         with new_mexico_container:
