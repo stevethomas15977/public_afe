@@ -2,8 +2,7 @@
 This repo is for showcasing the AFE work to the public.
 
 ## Python environment setup
-'''
-# Set up the virtual environment and install dependencies
+```
 python3 -m venv venv
 . venv/bin/activate
 pip install pipenv
@@ -37,4 +36,4 @@ sh -c "cat > $APP_PATH/.env" <<EOG
         GEOJSON_PATH="$GEOJSON_PATH"
         EOG
 
-'''
+```
