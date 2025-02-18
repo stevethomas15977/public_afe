@@ -110,6 +110,12 @@ resource "aws_lightsail_instance" "instance" {
         APP_SECRET="$APP_SECRET"
         S3_BUCKET_NAME="$S3_BUCKET_NAME"
         GEOJSON_PATH="$GEOJSON_PATH"
+        AFE_PROD_DNS="localhost"
+        APP="offset-well-identification"
+        PLSS_BUCKET="afe-plss"
+        LANGCHAIN_API_KEY="$LANGCHAIN_API_KEY"
+        LANGCHAIN_TRACING_V2="true"
+        OPENAI_API_KEY="$OPENAI_API_KEY"
         EOG
 
         # Set up the virtual environment and install dependencies
