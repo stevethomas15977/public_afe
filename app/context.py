@@ -48,6 +48,8 @@ class Context():
         self._stratigraphic_file_path = os.path.join("database", "stratigraphic.xlsx")
         self._stratigraphic_common_tanks_file_path = os.path.join("database", "stratigraphic-common-tanks.xlsx")
 
+        self._target_well_information_source = 'Union'
+
     @property
     def version(self):
         return self._version
@@ -302,11 +304,20 @@ class Context():
     def stratigraphic_common_tanks_file_path(self):
         return self._stratigraphic_common_tanks_file_path
     
+    @property
+    def target_well_information_source(self):
+        return self._target_well_information_source
+    
+    @target_well_information_source.setter
+    def target_well_information_source(self, target_well_information_source):
+        self._target_well_information_source = target_well_information_source
+        
     @staticmethod
-    def moosehorn_3_mile():
+    def moosehorn_3_mile_anadarko():
         context = Context()
         context.project = "test"
         context.project_path = os.path.join(context.projects_path, context.project)
+        context.target_well_information_source = 'Anadarko'
         
         context.target_well_information_path = os.path.join(context.project_path, 'target_well_information')
         context.well_data_path = os.path.join(context.project_path, 'well_data')
@@ -315,7 +326,7 @@ class Context():
 
         context.db_path = os.path.join(context.logs_path, f"{context.project}-{context.version}.db")
 
-        context.target_well_information_file = os.path.join(context.target_well_information_path, f"{context.project}-target-well-information.json")
+        context.target_well_information_file = os.path.join(context.target_well_information_path, f"{context.project}-target-well-information.pdf")
         context.well_file = os.path.join(context.well_data_path, f"{context.project}-well-data.xlsx")
         context.survey_file = os.path.join(context.survey_data_path, f"{context.project}-survey-data.xlsx")
         return context

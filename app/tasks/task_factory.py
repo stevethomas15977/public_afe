@@ -4,6 +4,7 @@ from tasks.load_texas_land_survey_system import LoadTexasLandSurveySystem
 from tasks.create_database import CreateDatabase
 from tasks.load_target_well_information import LoadTargetWellInformation
 from tasks.load_target_well_information_json import LoadTargetWellInformationJSON
+from tasks.load_target_well_information_anadarko import LoadTargetWellInformationAnadarko
 from tasks.load_well_data import LoadWellData
 from tasks.load_survey_data import LoadSurveyData
 from tasks.etl_well import ETLWell
@@ -56,6 +57,8 @@ class TaskFactory:
             return LoadTargetWellInformation(self.context)
         elif task_type == TASKS.LOAD_TARGET_WELL_INFORMATION_JSON.value:
             return LoadTargetWellInformationJSON(self.context)
+        elif task_type == TASKS.LOAD_TARGET_WELL_INFORMATION_ANADARKO.value:
+            return LoadTargetWellInformationAnadarko(self.context)
         elif task_type == TASKS.LOAD_WELL_DATA.value:
             return LoadWellData(self.context)
         elif task_type == TASKS.LOAD_SURVEY_DATA.value:

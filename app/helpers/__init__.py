@@ -78,3 +78,9 @@ from .excel_native_gun_barrel_plot_helper import (is_within_range,
                                                   months_between_dates,
                                                   create_surface_map,
                                                   create_3d_plot)
+
+from .anakarko_afe_helper import (extract_images_from_pdf,
+                                  well_data,
+                                  process_text_detection,
+                                  extract_text_from_pdf,
+                                  extract_well_table_information)

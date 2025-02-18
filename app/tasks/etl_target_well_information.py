@@ -33,7 +33,7 @@ class ETLTargetWellInformation(Task):
                     target_well.nad_system is None or
                     target_well.nad_zone is None):
                     message = f"Ensure the XY coordinates and NAD system and zone are provided"
-                    raise ValueError(message)
+                    # raise ValueError(message)
                 
                 # Ensure state specific information is provided
                 if target_well.state == "TX":
@@ -113,21 +113,29 @@ class ETLTargetWellInformation(Task):
                     raise ValueError(f"Subsurface depth must be provided")
                 
                 # Convert XYs to Latitudes and Longitudes; using Firt Take and Last Take Points.
+                if target_well.x_surface_location is None or target_well.y_surface_location is None:
+                    continue
                 target_well.latitude_surface_location, target_well.longitude_surface_location = spc_feet_to_latlon(northing=target_well.y_surface_location,
                                                                                                                 easting=target_well.x_surface_location,
                                                                                                                 spcZone=spcZone,
                                                                                                                 inDatum=inDatum)
                 
+                if target_well.x_first_take_point is None or target_well.y_first_take_point is None:
+                    continue
                 target_well.latitude_first_take_point, target_well.longitude_first_take_point = spc_feet_to_latlon(northing=target_well.y_first_take_point,
                                                                                                                 easting=target_well.x_first_take_point,
                                                                                                                 spcZone=spcZone,
                                                                                                                 inDatum=inDatum)
 
+                if target_well.x_last_take_point is None or target_well.y_last_take_point is None:
+                    continue
                 target_well.latitude_last_take_point, target_well.longitude_last_take_point = spc_feet_to_latlon(northing=target_well.y_last_take_point,
                                                                                                                  easting=target_well.x_last_take_point,
                                                                                                                  spcZone=spcZone,
                                                                                                                  inDatum=inDatum)
 
+                if target_well.x_bottom_hole is None or target_well.y_bottom_hole is None:
+                    continue
                 target_well.latitude_bottom_hole, target_well.longitude_bottom_hole = spc_feet_to_latlon(northing=target_well.y_bottom_hole,
                                                                                                          easting=target_well.x_bottom_hole,
                                                                                                          spcZone=spcZone,

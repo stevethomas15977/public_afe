@@ -35,10 +35,13 @@ class WorkflowManager:
         workgroup.add_task(TASKS.LOAD_SURVEY_DATA.value)
         workgroup.add_task(TASKS.ETL_WELL.value)
         if self._context.target_well_information_file:
-            if self._context.target_well_information_file.endswith(".json"):
+            if 'Manual' == self._context.target_well_information_source:
                 workgroup.add_task(TASKS.LOAD_TARGET_WELL_INFORMATION_JSON.value)
-            else:
+            elif 'Union' == self._context.target_well_information_source:
                 workgroup.add_task(TASKS.LOAD_TARGET_WELL_INFORMATION.value)
+            elif 'Anadarko' == self._context.target_well_information_source:    
+                workgroup.add_task(TASKS.LOAD_TARGET_WELL_INFORMATION_ANADARKO.value)
+
             workgroup.add_task(TASKS.ETL_TARGET_WELL_INFORMATION.value)
             workgroup.add_task(TASKS.CREATE_TARGET_WELL_ANALYSIS.value)
             workgroup.add_task(TASKS.CREATE_SIMULATED_WELL.value)
@@ -82,7 +85,7 @@ class WorkflowManager:
         self._factory = TaskFactory(self._context)
 
 if __name__ == "__main__":
-    context = Context().moosehorn_3mile_nicegui()
+    context = Context().moosehorn_3_mile_anadarko()
     workflow_manager = WorkflowManager(context)
     workflow_manager.project_initiation_workflow()
     workflow_manager.base_workflow()

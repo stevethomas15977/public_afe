@@ -209,6 +209,10 @@ async def index():
             elif 'Union' == project.target_well_information_source:
                 target_well_information_manual_container.visible = False
                 target_well_information_union_container.visible = True
+            elif 'Anadarko' == project.target_well_information_source:
+                target_well_information_manual_container.visible = False
+                target_well_information_union_container.visible = True
+                union_template_link.visible = False
                 
         async def handle_state_change():
             if project.state == 'NM':
@@ -300,15 +304,18 @@ async def index():
                     context.well_file = os.path.join(context.well_data_path, f'{project.name}-well-data.xlsx')
                     context.survey_file = os.path.join(context.survey_data_path, f'{project.name}-survey-data.xlsx')   
 
+                    context.target_well_information_source = project.target_well_information_source
                     if 'Union' == project.target_well_information_source and project.target_well_information_file:
                         shutil.move(project.target_well_information_file, os.path.join(context.target_well_information_path, f'{project.name}-target-well-information.xlsx'))
                         context.target_well_information_file = os.path.join(context.target_well_information_path, f'{project.name}-target-well-information.xlsx')
+                    elif 'Anadarko' == project.target_well_information_source and project.target_well_information_file: 
+                        shutil.move(project.target_well_information_file, os.path.join(context.target_well_information_path, f'{project.name}-target-well-information.pdf'))
+                        context.target_well_information_file = os.path.join(context.target_well_information_path, f'{project.name}-target-well-information.pdf')
                     elif 'Manual' == project.target_well_information_source:
                         for row in project.rows:
                             if not isna(row['surface_x']) and not isna(row['surface_y']) and not isna(row['bottom_hole_x']) and not isna(row['bottom_hole_y']):
                                 context.target_well_information_file = os.path.join(context.target_well_information_path, f'{project.name}-target-well-information.json')
                                 project.target_well_information_file = context.target_well_information_file
-                                
                                 with open(os.path.join(context.target_well_information_path, f'{project.name}-target-well-information.json'), "w") as f:
                                     json.dump(project.to_dict(), f, indent=4)
                             else:
@@ -374,7 +381,7 @@ async def index():
                 ui.label('Target Well Information').style('font-size: 1.8rem').classes('w-100').style('font-weight: bold;')
                 target_well_information_container = ui.row().style('width: 100%;').classes('justify-left')
                 with target_well_information_container:
-                    target_well_information_source_select = ui.select(options=['Union', 'Manual'], with_input=True,
+                    target_well_information_source_select = ui.select(options=['Union', 'Anadarko', 'Manual'], with_input=True,
                         label='Source',
                         on_change=lambda: handle_target_well_information_source_change()).bind_value(project, 'target_well_information_source').style('font-size: 1.2rem').classes('w-40')
                     ui.space()
@@ -384,7 +391,8 @@ async def index():
                     with target_well_information_union_container:
                         target_well_information_upload = ui.upload(label='Target Well Information', 
                                                                    on_upload=lambda event: handle_target_well_information_file_upload(event=event, file_type='TARGET_WELL_INFORMATION')).style('font-size: 1.2rem').classes('w-60')
-                        ui.link('Download Template', target='https://stevethomascpapublic.s3.amazonaws.com/target_well_information-TEMPLATE.xlsx', new_tab=True).style('font-size: 1.2rem').classes('w-80')
+                        union_template_link = ui.link('Download Template', target='https://stevethomascpapublic.s3.amazonaws.com/target_well_information-TEMPLATE.xlsx', new_tab=True).style('font-size: 1.2rem').classes('w-80')
+                                        
                     target_well_information_manual_container = ui.row().style('width: 100%;').classes('justify-left')
                     target_well_information_manual_container.visible = False
                     with target_well_information_manual_container:
