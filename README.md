@@ -1,5 +1,11 @@
-# public_afe
-This repo is for showcasing the AFE work to the public.
+# AFE Aanalysis
+## THe business problem
+### Determining Return on Investment for non-traditional (Hydralyic Fracing) oil/gas exploration is complex and 
+the business problem and who the customers/users are
+how you worked with them to make sure that your solution meets their needs
+demo the solution and explain how it addresses the business problem
+show and explain the architecture, platform, technical tools, language used, e.g., RAG model, AWS Bedrock, Langchain, python (strong preference) including which libraries, etc.
+explain how the solution was deployed, maintained, and supported
 
 ## Python environment setup
 ```

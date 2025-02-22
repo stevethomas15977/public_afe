@@ -84,3 +84,5 @@ from .anakarko_afe_helper import (extract_images_from_pdf,
                                   process_text_detection,
                                   extract_text_from_pdf,
                                   extract_well_table_information)
+
+from .chat_helper import (NiceGuiLogElementCallbackHandler, AFEChat)

@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+from helpers.chat_helper import AFEChat
 
 class Context():
     def __init__(self):
@@ -49,6 +50,8 @@ class Context():
         self._stratigraphic_common_tanks_file_path = os.path.join("database", "stratigraphic-common-tanks.xlsx")
 
         self._target_well_information_source = 'Union'
+
+        self._afechat = None
 
     @property
     def version(self):
@@ -312,6 +315,12 @@ class Context():
     def target_well_information_source(self, target_well_information_source):
         self._target_well_information_source = target_well_information_source
         
+    @property
+    def afechat(self):
+        if self._afechat is None:
+            self._afechat = AFEChat()
+        return self._afechat
+    
     @staticmethod
     def moosehorn_3_mile_anadarko():
         context = Context()

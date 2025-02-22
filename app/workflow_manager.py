@@ -61,6 +61,7 @@ class WorkflowManager:
         workgroup.add_task(TASKS.DETERMINE_PARENT_CHILD_WELLS.value)
         workgroup.add_task(TASKS.DETERMINE_BOUNDED_WELLS.value)
         workgroup.add_task(TASKS.CREATE_OFFSET_WELL_IDENTIFICATION_EXCEL.value)
+        workgroup.add_task(TASKS.CREATE_CODEVELOPMENT_GROUP_SURFACE_MAP.value)
         workgroup.run()
 
     def gun_barrel_workflow(self):

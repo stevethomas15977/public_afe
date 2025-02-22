@@ -483,17 +483,22 @@ async def index():
 
     def projects():
 
-        def open_project(project_name): 
+        def project(project_name): 
+            files(project_name)
+            chat(project_name)
+
+        def files(project_name):
             context.project_path = os.path.join(context.projects_path, project_name)
             context.well_data_path = os.path.join(context.project_path, 'well_data') 
             context.survey_data_path = os.path.join(context.project_path, 'survey_data')
+            context.target_well_information_path = os.path.join(context.project_path, 'target_well_information')
             context.logs_path = os.path.join(context.project_path, 'logs')
             context.db_path = os.path.join(context.logs_path, f"{context.project}-{context.version}.db")
 
             app.add_static_files(f"/{project_name}", context.project_path)
 
             files_container.clear()
-
+            
             with files_container:   
                 ui.label('Generated files').style('font-size: 1.2rem').classes('w-60').style('font-weight: bold;')
                 files = os.listdir(context.project_path)
@@ -514,6 +519,11 @@ async def index():
                     if os.path.isfile(os.path.join(context.survey_data_path, file)):
                         ui.link(text=file, target=f'/{project_name}/survey-data/{file}', new_tab=True).style('font-size: 1.2rem').classes('w-100')
 
+                files = os.listdir(context.target_well_information_path)
+                for file in files:
+                    if os.path.isfile(os.path.join(context.target_well_information_path, file)):
+                        ui.link(text=file, target=f'/{project_name}/target-well-information/{file}', new_tab=True).style('font-size: 1.2rem').classes('w-100')
+
                 ui.separator()
                 
                 ui.label('Log, database, and support files').style('font-size: 1.2rem').classes('w-80').style('font-weight: bold;')
@@ -522,6 +532,39 @@ async def index():
                     if os.path.isfile(os.path.join(context.logs_path, file)):
                         ui.link(text=file, target=f'/{project_name}/logs/{file}', new_tab=True).style('font-size: 1.2rem').classes('w-100')
 
+        def chat(project_name):
+
+            llm = context.afechat.llm
+
+            async def send() -> None:
+                question = text.value
+                text.value = ''
+
+                with message_container:
+                    ui.chat_message(text=question, name='You', sent=True)
+                    response_message = ui.chat_message(name='Bot', sent=False)
+                    spinner = ui.spinner(type='dots')
+
+                response = ''
+                async for chunk in llm.astream(question):
+                    response += chunk.content
+                    response_message.clear()
+                    with response_message:
+                        ui.html(response)
+                    ui.run_javascript('window.scrollTo(0, document.body.scrollHeight)')
+                message_container.remove(spinner)
+    
+            chat_container.clear()
+            with chat_container:
+                ui.add_css(r'a:link, a:visited {color: inherit !important; text-decoration: none; font-weight: 500}')
+
+                ui.query('.q-page').classes('flex')
+                ui.query('.nicegui-content').classes('w-full')
+
+                message_container = ui.column().style('width: 100%;').classes('justify-between')
+
+                text = ui.input().props('rounded outlined input-class=mx-3').on('keydown.enter', send).style('font-size: 1.2rem; width: 100%')
+        
         content_area.clear()
         with content_area:
 
@@ -532,18 +575,17 @@ async def index():
                 with projects_container:
                     project_select = ui.select(options=projects, 
                                             label='Projects',
-                                            with_input=True).style('font-size: 1.2rem').classes('w-40')
-                    ui.button('Open', on_click=lambda: open_project(project_select.value))
+                                            with_input=True,
+                                            on_change=lambda: project(project_select.value)).style('font-size: 1.2rem').classes('w-40')
                 ui.separator()
-                project_container = ui.row().style('width: 100%;').classes('justify-left')
-                with project_container:
-                    ui.space()
 
-                ui.separator()
-                files_container = ui.column().style('width: 100%;').classes('justify-left')
-                with files_container:
-                    ui.space()
-
+                with ui.tabs().classes('w-full') as tabs:
+                    files_tab = ui.tab('Files')
+                    chat_tab = ui.tab('Chat')
+                with ui.tab_panels(tabs, value=files_tab).classes('w-full max-w-2xl mx-auto flex-grow items-stretch'):
+                    files_container = ui.tab_panel(files_tab).classes('items-stretch')
+                    chat_container = ui.tab_panel(chat_tab).classes('items-stretch')
+    
 @ui.refreshable
 def time(project: str):
     if project:
