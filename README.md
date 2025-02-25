@@ -1,4 +1,4 @@
-# AFE Aanalysis
+# AFE Analysis
 
 ## 1. The business problem and who the customers/users are
 
