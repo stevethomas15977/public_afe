@@ -44,7 +44,7 @@ NOTE: My goal here is to highlight my python programming skills and show how AI 
 <span style="font-size:1.5em;">
 Please see the Github repository <a href="https://github.com/stevethomas15977/public_afe/tree/main/app">AFE Public</a> for a complete list of technologies.
 <br><br>
-The web application is built using python. The python libraries may be viewed via this [Pipfile](https://github.com/stevethomas15977/public_afe/blob/main/app/Pipfile). The UI is built with [NiceGUI](https://nicegui.io/), which is a python-base SPA (Single Page Application) web framework. Database management is provided by SQLite. Excel generation is provided by python library [XlsxWriter](https://xlsxwriter.readthedocs.io/). Current AI and OCR technologies include ChatGPT and Amazon Textract. These technologies are used to extract text from a PDF with a custom python library [PDFHelper](https://github.com/stevethomas15977/public_afe/blob/main/app/helpers/anakarko_afe_helper.py)
+The web application is built using python. The python libraries may be viewed via this <a href="https://github.com/stevethomas15977/public_afe/blob/main/app/Pipfile">Pipfile</a>. The UI is built with <a href="https://nicegui.io/">NiceGUI<a>, which is a python-base SPA (Single Page Application) web framework. Database management is provided by SQLite. Excel generation is provided by python library <a href="https://xlsxwriter.readthedocs.io/">XLSXWriter</a>. Current AI and OCR technologies include ChatGPT and Amazon Textract. These technologies are used to extract text from a PDF with a custom python library <a href="https://github.com/stevethomas15977/public_afe/blob/main/app/helpers/anakarko_afe_helper.py">PDFHelper</a>.
 
 </span>
 
@@ -53,7 +53,7 @@ The web application is built using python. The python libraries may be viewed vi
 <span style="font-size:1.5em;">
 The current version is a simple monolith web application running on AWS LightSail. LightSail is a very cost-effective compute solution for small to medium businesses. Compute components consist of a single load balancer for TLS termination and a target-group of EC2 instance running a python-based web application. See diagram below “AFE Analysis (v1.0).
 <br><br>
-The solution is deployed using [Github Actions](https://github.com/stevethomas15977/public_afe/blob/main/.github/workflows/main.yaml), [Terraform](https://github.com/stevethomas15977/public_afe/tree/main/terraform), and Linux BASH cloud-init scripting.
+The solution is deployed using <a href="https://github.com/stevethomas15977/public_afe/blob/main/.github/workflows/main.yaml">Github Actions</a>, <a href="https://github.com/stevethomas15977/public_afe/tree/main/terraform">Terraform</a>, and Linux BASH cloud-init scripting.
 <br><br>
 Maintain and support as included in a separate SLA engagement.
 
