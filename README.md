@@ -6,7 +6,7 @@
 The business problem consists of an oil and gas drilling investment firm (customer), with a significant amount of money to put into work. The customer desires to participate in more deals but is limited to a small number of deal participation, due to the lack of qualified financial analysts and off-the-self financial analysis automation solutions.
 <br><br>
 Energy industry Thought Leaders have indicated the marketplace for buying and selling oil and gas well working interest is to grow significantly in 2025 and beyond. But this marketplace will still be very competitive and fast paced, so potential investors must perform fast Return on Investment analysis, most of the time within a day or two of the deal’s offering.
-
+<br><br>
 It is proposed to build a custom automation software solution that will enable faster Return on Investment analysis thus potentially increasing deal participation and putting more investment money into work.
 
 </span>
@@ -28,9 +28,7 @@ A simple roadmap document (below) was created, as a communications tool, that id
 
 <span style="font-size:1.5em;">
 This demonstration will show how this solution automated several previously manual tasks, thus reclaiming up to 20 hours per deal, that was put to work on higher value tasks. Two of these automated tasks are: 
-
 <br>
-
 - Reduce manual data entry, using OCR and AI to extract key attributes from the PDF and image files. The value-add here is the replacement of previous error prone copy-and-paste tasks of text from both PDFs and images into an Excel spreadsheet. The automated task now extracts the desired text feature and inserts them into a database to downstream processing.
 - Automation of deterministic tasks, such as “Offset Well Co-development Groups” and “Child Well Risk Gun Barrel Plot”. For example,
   - “Offset Well Co-development Groups” is a report that list groups well that will be used as a substitute for the projected future cash flows of the proposed well grouping and a key input to Return on Investment calculation.
