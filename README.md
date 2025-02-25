@@ -1,4 +1,4 @@
-# AFE Analysis
+# A techical solution, aiding the analysis of Authorization for Expenditure (AFE) budgets for oil/gas drilling operations.
 
 ## 1. The business problem and who the customers/users are
 
