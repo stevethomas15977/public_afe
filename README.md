@@ -4,9 +4,7 @@
 
 <span style="font-size:1.5em;">
 The business problem consists of an oil and gas drilling investment firm (customer), with a significant amount of money to put into work. The customer desires to participate in more deals but is limited to a small number of deal participation, due to the lack of qualified financial analysts and off-the-self financial analysis automation solutions.
-
 <br><br>
-
 Energy industry Thought Leaders have indicated the marketplace for buying and selling oil and gas well working interest is to grow significantly in 2025 and beyond. But this marketplace will still be very competitive and fast paced, so potential investors must perform fast Return on Investment analysis, most of the time within a day or two of the deal’s offering.
 
 It is proposed to build a custom automation software solution that will enable faster Return on Investment analysis thus potentially increasing deal participation and putting more investment money into work.
