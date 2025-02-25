@@ -56,7 +56,7 @@ The current version is a simple monolith web application running on AWS LightSai
 <br><br>
 The solution is deployed using <a href="https://github.com/stevethomas15977/public_afe/blob/main/.github/workflows/main.yaml">Github Actions</a>, <a href="https://github.com/stevethomas15977/public_afe/tree/main/terraform">Terraform</a>, and Linux BASH cloud-init scripting.
 <br><br>
-Maintain and support is included in a separate SLA engagement.
+Maintain and support is included in a separate SLA engagement. Generally, new releases and bug fixes follow an agile release cycle. Critical bugs are resolved ASAP.
 
 </span>
 
