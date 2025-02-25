@@ -35,7 +35,7 @@ This demonstration will show how this solution automated several previously manu
 <br><br>
 “Child Well Risk Gun Barrel Plot” is a Scatter Plot that indicates any surround well groups to the proposed well group that could potentially imped the future cash flows. Any identified risk is subtracted from the future cash flows calculation.
 <br><br>
-NOTE: My goal here is to highlight my python programming skills and show how AI is used to automate previous manual tasks. If time allows, as the end, I would like to explain my plan to refactor this solution into an agntic LLM application using an well-known agent orchestration framework, such as <a href="https://academy.langchain.com/courses/take/intro-to-langgraph)">LangGraph</a>
+NOTE: My goal here is to highlight my python programming skills and show how AI is used to automate previous manual tasks. If time allows, as the end, I would like to explain my plan to refactor this solution into an Agentic LLM application using an well-known agent orchestration framework, such as <a href="https://academy.langchain.com/courses/take/intro-to-langgraph)">LangGraph</a>
 
 </span>
 
