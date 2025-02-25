@@ -15,9 +15,7 @@ It is proposed to build a custom automation software solution that will enable f
 
 <span style="font-size:1.5em;">
 As a technology consultant, I coordinated and led recurring work sessions to discover/document/learn current processes and demonstrated working software, that I developed. All work sessions were recorded, transcribed and summarized by AI then emailed to each team member. These summaries provided quality feedback, with sentiment, that helped ensure that the solution was meeting the client’s needs.
-
-<br>
-
+<br><br>
 A simple roadmap document (below) was created, as a communications tool, that identified and prioritized key roadmap tasks that could be automated.
 
 </span>
@@ -28,13 +26,15 @@ A simple roadmap document (below) was created, as a communications tool, that id
 
 <span style="font-size:1.5em;">
 This demonstration will show how this solution automated several previously manual tasks, thus reclaiming up to 20 hours per deal, that was put to work on higher value tasks. Two of these automated tasks are: 
-<br>
-- Reduce manual data entry, using OCR and AI to extract key attributes from the PDF and image files. The value-add here is the replacement of previous error prone copy-and-paste tasks of text from both PDFs and images into an Excel spreadsheet. The automated task now extracts the desired text feature and inserts them into a database to downstream processing.
-- Automation of deterministic tasks, such as “Offset Well Co-development Groups” and “Child Well Risk Gun Barrel Plot”. For example,
-  - “Offset Well Co-development Groups” is a report that list groups well that will be used as a substitute for the projected future cash flows of the proposed well grouping and a key input to Return on Investment calculation.
-  - “Child Well Risk Gun Barrel Plot” is a Scatter Plot that indicates any surround well groups to the proposed well group that could potentially imped the future cash flows. Any identified risk is subtracted from the future cash flows calculation.
-
-<br>
+<br><br>
+1. Reduce manual data entry, using OCR and AI to extract key attributes from the PDF and image files. The value-add here is the replacement of previous error prone copy-and-paste tasks of text from both PDFs and images into an Excel spreadsheet. The automated task now extracts the desired text feature and inserts them into a database to downstream processing.
+<br><br>
+2. Automation of deterministic tasks, such as “Offset Well Co-development Groups” and “Child Well Risk Gun Barrel Plot”. For example,
+<br><br>
+“Offset Well Co-development Groups” is a report that list groups well that will be used as a substitute for the projected future cash flows of the proposed well grouping and a key input to Return on Investment calculation.
+<br><br>
+“Child Well Risk Gun Barrel Plot” is a Scatter Plot that indicates any surround well groups to the proposed well group that could potentially imped the future cash flows. Any identified risk is subtracted from the future cash flows calculation.
+<br><br>
 NOTE: My goal here is to highlight my python programming skills and show how AI is used to automate previous manual tasks. If time allows, as the end, I would like to explain my plan to refactor this solution into an agntic LLM application using an well-known agent orchestration framework, such as <a href="https://academy.langchain.com/courses/take/intro-to-langgraph)">LangGraph</a>
 
 </span>
@@ -43,9 +43,7 @@ NOTE: My goal here is to highlight my python programming skills and show how AI 
 
 <span style="font-size:1.5em;">
 Please see the Github repository <a href="https://github.com/stevethomas15977/public_afe/tree/main/app">AFE Public</a> for a complete list of technologies.
-
-<br>
-
+<br><br>
 The web application is built using python. The python libraries may be viewed via this [Pipfile](https://github.com/stevethomas15977/public_afe/blob/main/app/Pipfile). The UI is built with [NiceGUI](https://nicegui.io/), which is a python-base SPA (Single Page Application) web framework. Database management is provided by SQLite. Excel generation is provided by python library [XlsxWriter](https://xlsxwriter.readthedocs.io/). Current AI and OCR technologies include ChatGPT and Amazon Textract. These technologies are used to extract text from a PDF with a custom python library [PDFHelper](https://github.com/stevethomas15977/public_afe/blob/main/app/helpers/anakarko_afe_helper.py)
 
 </span>
@@ -54,13 +52,9 @@ The web application is built using python. The python libraries may be viewed vi
 
 <span style="font-size:1.5em;">
 The current version is a simple monolith web application running on AWS LightSail. LightSail is a very cost-effective compute solution for small to medium businesses. Compute components consist of a single load balancer for TLS termination and a target-group of EC2 instance running a python-based web application. See diagram below “AFE Analysis (v1.0).
-
-<br>
-
+<br><br>
 The solution is deployed using [Github Actions](https://github.com/stevethomas15977/public_afe/blob/main/.github/workflows/main.yaml), [Terraform](https://github.com/stevethomas15977/public_afe/tree/main/terraform), and Linux BASH cloud-init scripting.
-
-<br>
-
+<br><br>
 Maintain and support as included in a separate SLA engagement.
 
 </span>
