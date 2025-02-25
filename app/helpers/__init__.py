@@ -86,3 +86,6 @@ from .anakarko_afe_helper import (extract_images_from_pdf,
                                   extract_well_table_information)
 
 from .chat_helper import (NiceGuiLogElementCallbackHandler, AFEChat)
+
+from .langchain_helper import (create_tool_node_with_fallback, 
+                               handle_tool_error)

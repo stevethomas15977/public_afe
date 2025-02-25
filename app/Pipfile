@@ -44,11 +44,11 @@ pdf2image = "*"
 pytesseract = "*"
 pillow = "*"
 fastapi = "*"
-langchain-community = "*"
 langchainhub = "*"
 langgraph = "*"
+langchain = "*"
+langchain-community = "*"
 langchain-openai = "*"
-langchain = {extras = ["aws"], version = "*"}
 
 [dev-packages]
 
