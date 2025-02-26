@@ -16,7 +16,7 @@ It is proposed to build a custom automation software solution that will enable f
 <span style="font-size:1.5em;">
 As a technology consultant, I coordinated and led recurring work sessions to discover/document/learn current processes and demonstrated working software, that I developed. All work sessions were recorded, transcribed and summarized by AI then emailed to each team member. These summaries provided quality feedback, with sentiment, that helped ensure that the solution was meeting the client’s needs.
 <br><br>
-A simple roadmap document (below) was created, as a communications tool, that identified and prioritized key roadmap tasks that could be automated.
+A simple roadmap document (below) was created, as a communications tool, that identifies and prioritizes key roadmap tasks that could be automated.
 
 </span>
 
