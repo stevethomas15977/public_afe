@@ -48,7 +48,7 @@ The web application is built using python. The python libraries may be viewed vi
 <br><br>
 My goal here is to highlight my python programming skills and show how AI is used to automate previous manual tasks. If time permitting, I would like to explain my plan to refactor this version 1 solution into an Agentic ReAct-based LLM application using the orchestration and integration frameworks of <a href="https://academy.langchain.com/courses/take/intro-to-langgraph">LangGraph</a> and <a href="https://python.langchain.com/docs/tutorials/">LangChain</a>. Specifically for routing, memory management, tool calls and RAG. As well as asynchronous data wrangling implementation that ensures a well-architected RAG implementation. 
 <br><br>
-The goal of this refactoring will create an AI Research Assistant specifically for Return on Investment analysis of proposed non-conventional oil/gas drilling operations budgets. The following knowledge bases and others could be used as implementation references: 
+The goal of this refactoring is to create an AI Research Assistant specifically for Return on Investment analysis of proposed non-conventional oil/gas drilling operations budgets. The following knowledge bases and others could be used as implementation references: 
 <br>
   <ul>
   <li><a href="https://github.com/langchain-ai/langchain-academy/blob/main/module-4/research-assistant.ipynb">Research Assistant</a></li>
