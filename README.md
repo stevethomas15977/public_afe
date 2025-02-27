@@ -1,4 +1,4 @@
-# A techical solution, aiding the analysis of Authorization for Expenditure (AFE) budgets for oil/gas drilling operations.
+# A research assistant for oil/gas drilling operations Authorization for Expenditure (AFE) budgets.
 
 ## 1. The business problem and who the customers/users are
 
