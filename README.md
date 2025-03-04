@@ -71,6 +71,8 @@ Maintain and support is included in a separate SLA engagement. Generally, new re
 
 </span>
 
+![Workflow Diagram](workflow_diagram_v1.png "AFE Analysis (v1.0)")
+
 ![Context Diagram](context_diagram_v1.png "AFE Analysis (v1.0)")
 
 ### Run within WLS Ubuntu 24.04 LTS and VS Code:
