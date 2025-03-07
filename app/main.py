@@ -3,7 +3,8 @@ from nicegui import ui, app, events, run
 from helpers import (texas_plss_block_section_overlay,
                      apply_geojson_overlay,
                      spc_feet_to_latlon,
-                     write_to_file)
+                     write_to_file,
+                     validate_texas_abstraction)
 from services import ( NewMexicoLandSurveySystemService, TexasLandSurveySystemService )
 from context import Context
 import folium
@@ -175,6 +176,12 @@ async def index():
                 temp_file.close()
                 if file_type == 'TARGET_WELL_INFORMATION':
                     project.target_well_information_file = temp_file.name   
+                
+                # Validate survey system data
+                if not validate_texas_abstraction(context=context, file_path=project.target_well_information_file):
+                    ui.notify('Invalid Texas Abstraction', type='negative')
+                    target_well_information_upload.reset()
+                    return
                 
                 ui.notify(f"Uploaded {event.name} successfully!", type='positive')
             except Exception as e:

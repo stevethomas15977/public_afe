@@ -51,7 +51,8 @@ from .xyzdistance_helper import (calculate_xyz_distances)
 from .task_helper import (task_logger)
 
 from .texas_land_survey_system_helper import (county_fips, 
-                                             section_4_corners)
+                                             section_4_corners,
+                                             validate_texas_abstraction)
 
 from .gun_barrel_plot_helper import (plot_hypothenuse,
                                                     plot_adjacent,
