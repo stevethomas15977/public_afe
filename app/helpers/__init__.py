@@ -90,3 +90,5 @@ from .chat_helper import (NiceGuiLogElementCallbackHandler, AFEChat)
 
 from .langchain_helper import (create_tool_node_with_fallback, 
                                handle_tool_error)
+
+from .main_helper import (create_surface_map, Project)

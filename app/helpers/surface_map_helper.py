@@ -200,9 +200,10 @@ def draw_section_lines(coordinates: dict, tooltip: str, map: Map) -> None:
     end = adjust_coordinate(coordinates['southwest_latitude'], coordinates['southwest_longitude'], 7920, "E")
     PolyLine([start, end], color='red', weight=3.0, tooltip=f"Gun Barrel Slice").add_to(map)
 
-    start = coordinates['northwest_latitude'], coordinates['northwest_longitude']
-    end = adjust_coordinate(coordinates['northwest_latitude'], coordinates['northwest_longitude'], 5280, "W")
-    PolyLine([start, end], color='green', weight=3.0, tooltip=f"Northwest Section Line").add_to(map)
+    if 'northwest_latitude' in coordinates and 'northwest_longitude' in coordinates:
+        start = coordinates['northwest_latitude'], coordinates['northwest_longitude']
+        end = adjust_coordinate(coordinates['northwest_latitude'], coordinates['northwest_longitude'], 5280, "W")
+        PolyLine([start, end], color='green', weight=3.0, tooltip=f"Northwest Section Line").add_to(map)
 
 def draw_wells(context: Context, 
                well_service: WellService, 

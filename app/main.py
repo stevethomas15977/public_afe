@@ -4,10 +4,12 @@ from helpers import (texas_plss_block_section_overlay,
                      apply_geojson_overlay,
                      spc_feet_to_latlon,
                      write_to_file,
-                     validate_texas_abstraction)
+                     validate_texas_abstraction,
+                     create_surface_map,
+                     Project)
 from services import ( NewMexicoLandSurveySystemService, TexasLandSurveySystemService )
 from context import Context
-import folium
+from folium import Map, Marker, GeoJson
 import os, io, shutil, json, time
 import tempfile
 from pandas import isna, read_excel, DataFrame
@@ -32,51 +34,6 @@ class AuthMiddleware(BaseHTTPMiddleware):
         return await call_next(request)
 
 app.add_middleware(AuthMiddleware)
-
-class Project:
-    def __init__(self):
-        self.name = None
-        self.provider = 'Enverus'
-        self.offset_well_file = None
-        self.offset_survey_file = None
-        self.target_well_information_file = None
-        self.target_well_information_source = 'Union'
-        self.state = None
-        self.county = None
-        self.abstract = None
-        self.block = None
-        self.tx_section = None
-        self.township = None
-        self.township_direction = None
-        self.range = None
-        self.range_direction = None
-        self.nm_section = None
-        self.system = 'NAD27'
-        self.zone = 'Central'
-        self.rows = []
-
-    def to_dict(self):
-        return {
-            "name": self.name,
-            "proivder": self.provider,
-            "offset_well_file": self.offset_well_file,
-            "offset_survey_file": self.offset_survey_file,
-            "target_well_information_file": self.target_well_information_file,
-            "target_well_information_source": self.target_well_information_source,
-            "state": self.state,
-            "county": self.county,
-            "abstract": self.abstract,
-            "block": self.block,
-            "tx_section": self.tx_section,
-            "township": self.township,
-            "township_direction": self.township_direction,
-            "range": self.range,
-            "range_direction": self.range_direction,
-            "nm_section": self.nm_section,
-            "system": self.system,
-            "zone": self.zone,
-            "rows": self.rows
-        }
 
 target_well_columns = [
             {'headerName': 'ID', 'field': 'id', 'type': 'number', 'cellStyle':  {'textAlign': 'center'}},
@@ -230,6 +187,9 @@ async def index():
                 texas_container.visible = True
                 new_mexico_container.visible = False
                 counties = texas_land_survey_service.get_distinct_counties()
+                abstract_select.clear()
+                abstract_select.options = []
+                abstract_select.update()
             county_select.clear()
             county_select.options = counties
             county_select.update()
@@ -245,6 +205,10 @@ async def index():
                 township_select.clear()
                 township_select.options = townships
                 township_select.update()
+
+        def handle_abstract_change():
+            surface_map_container.visible = True
+            map_html.set_content(create_surface_map(context=context, project=project))
 
         def handle_township_change():
             township_directions = new_mexico_land_survey_service.get_distinct_township_directions_by_county_township(project.county, project.township)
@@ -445,7 +409,8 @@ async def index():
                         with texas_container:
                             abstract_select = ui.select(options=[], 
                                 with_input=True,
-                                label='Abstract').bind_value(project, 'abstract').style('font-size: 1.2rem').classes('w-40')
+                                label='Abstract',
+                                on_change=lambda: handle_abstract_change()).bind_value(project, 'abstract').style('font-size: 1.2rem').classes('w-40')
                         
                         new_mexico_container = ui.row().style('width: 100%;').classes('justify-left')
                         new_mexico_container.visible = False
@@ -469,6 +434,13 @@ async def index():
                             new_mexico_section_select = ui.select(options=[],
                                 with_input=True,
                                 label='Section').style('font-size: 1.2rem').bind_value(project, 'nm_section').classes('w-40')
+
+                ui.separator()
+                
+                surface_map_container = ui.expansion('Surface Map', icon='description').classes('w-full').style('width: 100%; font-size: 1.3rem;')
+                surface_map_container.visible = False
+                with surface_map_container:
+                    map_html = ui.html('').style('width: 100%; height: 100%;')
 
                 ui.separator()
 
