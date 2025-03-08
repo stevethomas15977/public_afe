@@ -124,3 +124,25 @@ EOG
 ```
 
 ##### See the .vscode/launch.json and run "Debug Main" configuration.
+
+## Definitions
+
+#### Working Interest (US)
+An ownership interest in an oil & gas lease giving the working interest owner the authority to explore for, drill, and produce oil and gas from the leased property. The working interest owner benefits from the resulting production subject to payment of royalties and associated costs of exploring, drilling, leasing, and producing oil and gas.
+
+### Carried Interest (Oil and Gas) (US)
+In the oil and gas context, a carried interest is a fractional oil and gas interest that is not required to pay for drilling or operational expenses for a limited time (carry period). These expenses are paid by the other working interest owners (called co-tenants) of the property. Depending on the terms of the carried interest, the carry may apply only to the owner's share of costs incurred in drilling or continue through subsequent costs incurred in well completion.
+Until a well has paid out, carried interest owners do not normally receive income from the well but thereafter receive an agreed percentage share of its subsequent production.
+
+### Well Completion (US)
+In the upstream oil and gas industry, the actions performed after a well is drilled to enable it to produce oil and gas.
+Well completion may include:
+Installing casing, tubing, packers, or other equipment in the wellbore to isolate producing geologic formations and allow production from the target depths.
+Perforating the casing to allow oil and gas to enter the well.
+Stimulating the well with acids or other fluids to allow oil and gas to more easily flow into the well.
+Hydraulic fracturing, or injection of fluids at high pressure to cause fractures in the formation and release oil and gas from the formation into the well.
+After these activities, the operator flows back the well to recover the fluids used to stimulate or fracture the well and commences production of oil and gas. The operator may also test the well to determine oil production and gas production rates, well pressures, gas-oil ratio, and other information.
+Completion may also refer to the process of perforating, stimulating, and equipping an injection well or disposal well to inject fluids into a formation.
+
+### After Payout (US)
+Sometimes called at payout, the point after all the costs of exploring, drilling, producing, equipping, completing, and operating have been recouped from the sale of production from an oil or gas well. Payout is often a defined term in farmouts, joint operating agreements, and other agreements relating to oil and gas exploration.
