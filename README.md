@@ -127,14 +127,17 @@ EOG
 
 ## Definitions
 
-#### Working Interest (US)
+#### Authorization for Expenditure (AFE)
+In the oil & gas industry, an estimate of the costs incurred in conducting an operation, such as drilling, completing, reworking, equipping, or plugging an oil or gas well. An AFE commonly details the costs as intangible or tangible expenses, which are handled differently under the Internal Revenue Code. Operators typically prepare an AFE and send it to the other owners in the well when seeking their approval of the proposed operation. If an election is required under an agreement or pooling order, to join in the operation, the owners must communicate their approval of the AFE to the operator within a certain period of time. Operators usually request the owners send a prepayment of their proportionate share of the AFE with their election to join in the proposed operation.
+
+#### Working Interest
 An ownership interest in an oil & gas lease giving the working interest owner the authority to explore for, drill, and produce oil and gas from the leased property. The working interest owner benefits from the resulting production subject to payment of royalties and associated costs of exploring, drilling, leasing, and producing oil and gas.
 
-### Carried Interest (Oil and Gas) (US)
+### Carried Interest
 In the oil and gas context, a carried interest is a fractional oil and gas interest that is not required to pay for drilling or operational expenses for a limited time (carry period). These expenses are paid by the other working interest owners (called co-tenants) of the property. Depending on the terms of the carried interest, the carry may apply only to the owner's share of costs incurred in drilling or continue through subsequent costs incurred in well completion.
 Until a well has paid out, carried interest owners do not normally receive income from the well but thereafter receive an agreed percentage share of its subsequent production.
 
-### Well Completion (US)
+### Well Completion
 In the upstream oil and gas industry, the actions performed after a well is drilled to enable it to produce oil and gas.
 Well completion may include:
 Installing casing, tubing, packers, or other equipment in the wellbore to isolate producing geologic formations and allow production from the target depths.
@@ -144,5 +147,5 @@ Hydraulic fracturing, or injection of fluids at high pressure to cause fractures
 After these activities, the operator flows back the well to recover the fluids used to stimulate or fracture the well and commences production of oil and gas. The operator may also test the well to determine oil production and gas production rates, well pressures, gas-oil ratio, and other information.
 Completion may also refer to the process of perforating, stimulating, and equipping an injection well or disposal well to inject fluids into a formation.
 
-### After Payout (US)
+### After Payout
 Sometimes called at payout, the point after all the costs of exploring, drilling, producing, equipping, completing, and operating have been recouped from the sale of production from an oil or gas well. Payout is often a defined term in farmouts, joint operating agreements, and other agreements relating to oil and gas exploration.
