@@ -1,4 +1,4 @@
-# A research assistant for oil/gas drilling operations Authorization for Expenditure (AFE) budgets.
+# An AI research assistant for buying/selling non-operating working-interests in oil/gas wells.
 
 ## 1. The business problem and who the customers/users are
 
