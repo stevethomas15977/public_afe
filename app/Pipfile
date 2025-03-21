@@ -49,6 +49,8 @@ langgraph = "*"
 langchain = "*"
 langchain-community = "*"
 langchain-openai = "*"
+dbf = "*"
+dbfread = "*"
 
 [dev-packages]
 

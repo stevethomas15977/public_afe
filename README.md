@@ -68,13 +68,14 @@ The current version is a simple monolith web application running on AWS LightSai
 The solution is deployed using <a href="https://github.com/stevethomas15977/public_afe/blob/main/.github/workflows/main.yaml">Github Actions</a>, <a href="https://github.com/stevethomas15977/public_afe/tree/main/terraform">Terraform</a>, and Linux BASH cloud-init scripting.
 <br><br>
 Maintain and support is included in a separate SLA engagement. Generally, new releases and bug fixes follow an agile release cycle. Critical bugs are resolved ASAP.
-
+<br><br>
 </span>
 
-![Workflow Diagram](workflow_diagram_v1.png "AFE Analysis (v1.0)")
+![Context Diagram](context_diagram_v2.png "AFE Analyst (v1.0)")
+Context Diagram
 
-![Context Diagram](context_diagram_v1.png "AFE Analysis (v1.0)")
-
+![Compute Context Diagram](context_diagram_v1.png "Compute (v1.0)")
+Compute Diagram
 ### Run within WLS Ubuntu 24.04 LTS and VS Code:
 ```
 cd /app
