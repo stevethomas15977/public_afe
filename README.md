@@ -1,10 +1,10 @@
-# An IT solution for assisting oil/gas professionals with the assessmente of proposed drilling opportuntities.
+# An IT solution for assisting oil/gas professionals with the assessment of proposed drilling opportunities.
 
 ![Compute Context Diagram](workflow_diagram_v1.png "Compute (v1.0)")
 Simplified context diagram.
 
 ![Compute Context Diagram](context_diagram_v1.png "Compute (v1.0)")
-In addition to running locally, the solution can is currently configured for deployment on AWS Lightsail via Terraform.
+In addition to running locally, the solution is currently configured for deployment on AWS Lightsail via Terraform.
 
 ### Run within WLS Ubuntu 24.04 LTS and VS Code:
 ```
