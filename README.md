@@ -76,7 +76,7 @@ This platform reduces manual analysis effort and enables faster, more informed i
 #### Barrel Plot
 <img src="moosehorn-3-mile/moosehorn-3-mile-barrel-plot-1.8.png" width="500"/>
 
-##### See Github Repo directory "moosehorn-3-mile" for addition output artifacts
+[Addition generated artifacts](https://github.com/stevethomas15977/public_afe/tree/main/moosehorn-3-mile)
 
 ---
 
