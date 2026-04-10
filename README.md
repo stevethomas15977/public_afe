@@ -39,6 +39,7 @@ Investor-Ready Outputs (Charts, Tables)
 
 ## ⚙️ Technical Highlights
 
+- Optimized data processing workflows for large well datasets (thousands of records)
 - Built scalable **Python data pipelines** using Pandas and NumPy  
 - Developed automated workflows to transform raw engineering data into structured datasets  
 - Generated Excel reports programmatically using **XlsxWriter**, including:
@@ -72,17 +73,8 @@ This platform reduces manual analysis effort and enables faster, more informed i
 - 2D / 3D Barrel Charts  
 - Risk Assessment Tables  
 
-#### Cross Plot
-<img src="moosehorn-3-mile/moosehorn-3-mile-cross-plot-1.8.png" width="500"/>
-
 #### Barrel Plot
 <img src="moosehorn-3-mile/moosehorn-3-mile-barrel-plot-1.8.png" width="500"/>
-
-#### 3D Barrel Plot
-<img src="moosehorn-3-mile/logs/moosehorn-3-mile-3d-barrel-plot-1.8.png" width="500"/>
-
-#### Surface Map
-<img src="moosehorn-3-mile/logs/moosehorn-3-mile-gun-barrel-surface-map-1.8.png" width="500"/>
 
 ##### See Github Repo directory "moosehorn-3-mile" for addition output artifacts
 
