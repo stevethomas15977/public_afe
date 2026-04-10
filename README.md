@@ -1,138 +1,76 @@
-# Oil Well Investment Analysis Toolkit
+# 🚀 Oil Well Investment Analysis Platform
 
-A Python-based analytics platform that automates the preparation of **oil well drilling investment analysis artifacts** used in upstream oil & gas decision making.
+End-to-end Python-based system that transforms raw AFE (Authorization for Expenditure) data, geological inputs, and offset well production data into **investor-ready financial and risk analysis artifacts**.
 
-This project demonstrates how **data engineering, geospatial analytics, and automated reporting** can assist petroleum engineers and financial analysts in preparing **AFE (Authorization for Expenditure) drilling proposals**.
-
-The system transforms raw engineering and production datasets into **investor-ready Excel analysis workbooks** containing production comparisons, offset well evaluations, and engineering visualizations.
+Built to support petroleum engineers, geologists, and investors in evaluating drilling opportunities using **data-driven insights and automated analytics**.
 
 ---
 
-# Business Context
+## 🎯 Overview
 
-When an oil company evaluates whether to drill a new well, engineers must prepare a **technical and financial evidence package** supporting the investment.
+This project automates the analysis of proposed oil well investments by integrating multiple data sources and generating structured outputs used in financial and operational decision-making.
 
-This typically includes:
+### 🔑 Key Capabilities
 
-- Production performance of nearby wells  
-- Geological context  
-- Drilling cost estimates  
-- Production forecasts  
-- Engineering visualizations  
-
-Preparing these materials manually can require **significant time gathering and analyzing data across multiple systems**.
-
-This project demonstrates how a **Python analytics pipeline can automate this process**, producing standardized analysis artifacts for investment review meetings.
+- Ingests AFE budget PDFs and structured Excel datasets  
+- Processes proposed and offset well data for comparative analysis  
+- Generates Excel-based reports with engineering visualizations  
+- Produces 2D and 3D barrel charts for production analysis  
+- Automates preparation of investor-ready deliverables  
 
 ---
 
-# Key Capabilities
+## 🏗️ Architecture
+```
+AFE Budget (PDF) + Well Data (Excel)
+↓
+Python Data Pipeline
+(Pandas, NumPy Processing)
+↓
+Data Enrichment & Analysis
+↓
+Excel Report Generation (XlsxWriter)
+↓
+Investor-Ready Outputs (Charts, Tables)
+```
 
-The application automates several aspects of drilling opportunity analysis.
-
-## Data Engineering
-
-- Ingestion of engineering and production datasets  
-- Structured transformation of raw well data  
-- Normalization of well attributes  
-
-## Offset Well Analysis
-
-- Identification of nearby wells  
-- Production comparison analytics  
-- Spatial well relationship analysis  
-
-## Automated Reporting
-
-- Generation of multi-tab Excel investment analysis workbooks  
-- Automated engineering charts and graphs  
-- Standardized reporting artifacts  
-
-## Engineering Visualization
-
-- 2D barrel charts  
-- 3D spatial well comparison charts  
-- Well production comparison plots  
 
 ---
 
-# Example Workflow
+## ⚙️ Technical Highlights
 
-1. Petroleum engineer uploads project datasets  
-2. Python pipeline ingests and processes well data  
-3. Nearby wells are identified and analyzed  
-4. Production performance comparisons are generated  
-5. Excel investment workbook is automatically produced  
-
-#### The final output becomes an investment review artifact supporting drilling decisions.
-<img src="workflow_diagram_v1.png" width="500"/>
-
----
-
-# Input Data Sources
-
-The pipeline processes three primary input files.
-
-## AFE Budget (PDF)
-
-The **Authorization for Expenditure (AFE)** document contains:
-
-- Drilling cost estimates  
-- Project capital expenditures  
-- Geological plat diagrams  
-- Financial assumptions  
-
-These values support **financial modeling and investment justification**.
+- Built scalable **Python data pipelines** using Pandas and NumPy  
+- Developed automated workflows to transform raw engineering data into structured datasets  
+- Generated Excel reports programmatically using **XlsxWriter**, including:
+  - 2D and 3D barrel charts  
+  - Production comparison charts  
+  - Risk analysis tables  
+- Implemented geospatial and proximity analysis for offset well evaluation  
+- Integrated structured (Excel) and semi-structured (PDF) data sources  
+- Designed modular, reusable data processing components  
+- Applied vector-based distance calculations for spatial well analysis  
 
 ---
 
-## Proposed Well Dataset (Excel)
+## 💡 Business Impact
 
-Contains candidate wells being evaluated for drilling.
+This platform reduces manual analysis effort and enables faster, more informed investment decisions by:
 
-Typical attributes include:
-
-- Well name  
-- API number  
-- Surface location  
-- Bottom hole location  
-- Formation target  
-- Drilling depth  
+- Automating financial and production modeling inputs  
+- Standardizing evaluation across multiple well candidates  
+- Providing visual insights into production potential  
+- Supporting investor-ready reporting workflows  
+- Reducing time-to-analysis for engineering and finance teams  
 
 ---
 
-## Offset / Child Well Dataset (Excel)
+## 📊 Example Outputs
 
-Nearby wells used for production comparison and forecasting.
-
-Typical attributes include:
-
-- Well name  
-- API identifier  
-- Historical production volumes  
-- Completion intervals  
-- Geographic coordinates  
-
-These wells act as **analog wells used to estimate expected production**.
-
----
-
-# Output Artifacts
-
-The application produces a **multi-tab Excel investment analysis workbook**.
-
-## Example Tabs
-
-- Proposed Wells  
-- Offset Wells  
-- Production Summary  
-- Barrel Chart (2D)  
-- Barrel Chart (3D)  
-- Risk Analysis  
-
-These artifacts are used during **drilling investment review meetings**.
-
-### An example workbook generated by the system can be downloaded here:
+- Proposed Wells Summary  
+- Offset Wells Comparison  
+- Production Performance Analysis  
+- 2D / 3D Barrel Charts  
+- Risk Assessment Tables  
 
 #### Cross Plot
 <img src="moosehorn-3-mile/moosehorn-3-mile-cross-plot-1.8.png" width="500"/>
@@ -147,39 +85,19 @@ These artifacts are used during **drilling investment review meetings**.
 <img src="moosehorn-3-mile/logs/moosehorn-3-mile-gun-barrel-surface-map-1.8.png" width="500"/>
 
 ##### See Github Repo directory "moosehorn-3-mile" for addition output artifacts
+
 ---
 
-# Technologies Used
+## ▶️ Getting Started
+```
+Prerequisites
+- Python 3.9+
+- pip
+Installation
+- git clone https://github.com/stevethomas15977/public_afe.git
+- cd public_afe
+- pip install -r requirements.txt
+Run the Application
+- python main.py
+```
 
-## Programming
-
-- Python 3.12
-- Bash on Ubuntu
-
-## Data Engineering
-
-- SQLite database
-- Pandas  
-- NumPy  
-
-## Visualization
-
-- Matplotlib  
-- Excel native chart generation
-- OpenMap
-
-## File Processing
-
-- OpenPyXL  
-- XlsxWriter  
-- PDF processing utilities
-
-## Cloud Compute
-
-- Github Actions 
-- Terraform IaC
-- LightSail instances
-- S3
-- HTTPS LoadBalancer w/ Auto Scaling Group
-
-<img src="context_diagram_v1.png" width="500"/>
